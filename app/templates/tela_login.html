@@ -1,0 +1,24 @@
+{% extends "main/main.html" %}
+
+{% block content %}
+
+<form name="formTelaLogin" id="formTelaLogin" method="post" action="/process_login/">
+    <div class="col-6 mt-4 m-auto">
+        <!--bloco exibe mensagem definida na função /salvar_dados/-->
+        {% if msg %}
+            <div class="alert {{css}}">
+                {{msg}}
+            </div>
+        {% endif %}
+
+        {% csrf_token %}
+        <label for="user" >Nome do Usuário:</label>
+        <input class="form-control mt-1 " type="text" name="user" id="user" placeholder="Nome do Usuário">
+        <br>
+        <label for="password">Senha:</label>
+        <input class="form-control mt-1" type="password" name="password" id="password" placeholder="Digite a Senha">
+        
+        <input class="btn btn-info mt-4" type="submit" value="Entrar">
+    </div>
+</form>
+{% endblock  %}
