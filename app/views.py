@@ -23,6 +23,7 @@ def salvar_dados(request):
         user = User.objects.create_user(request.POST['user'],request.POST['email'] , request.POST['password'])
         user.first_name = request.POST['name']
         user.save()
+        user.user_permissions.add()
         data['msg'] = 'Usuário Cadastrado com Sucesso!'
         data['class'] = 'alert-success'      
     return render(request, 'cadastro_usuario.html',data)
